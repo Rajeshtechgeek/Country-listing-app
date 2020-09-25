@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import androidx.transition.Fade
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.sample.myapplication.DetailsTransition
 import com.sample.myapplication.R
 import com.sample.myapplication.api.response.CountryResponseItem
 import com.sample.myapplication.databinding.CountryDetailFragmentBinding
@@ -18,26 +21,22 @@ import com.sample.myapplication.utils.ImageUtils
 
 class CountryDetailFragment : Fragment() {
 
-    companion object {
-        private const val KEY = "data"
-        fun newInstance(data: CountryResponseItem): CountryDetailFragment {
-            return CountryDetailFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(KEY, data)
-                }
-            }
-        }
-    }
-
     private var data: CountryResponseItem? = null
     private var _binding: CountryDetailFragmentBinding? = null
     private val binding get() = _binding!!
+    private val args: CountryDetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Setup enter transition on second fragment
+        sharedElementEnterTransition = DetailsTransition()
+        enterTransition = Fade()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = CountryDetailFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,7 +44,7 @@ class CountryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
-        data = arguments?.getParcelable(KEY)
+        data = args.CountryDetail
         data?.let {
             loadImage(it)
             binding.toolbarLayout.title = it.name

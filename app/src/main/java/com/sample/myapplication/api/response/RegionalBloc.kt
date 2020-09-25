@@ -1,8 +1,11 @@
 package com.sample.myapplication.api.response
+
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class RegionalBloc(
     @SerializedName("acronym")
     val acronym: String?,
