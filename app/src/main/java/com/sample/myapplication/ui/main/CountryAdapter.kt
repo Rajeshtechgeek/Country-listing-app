@@ -7,9 +7,9 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sample.myapplication.R
-import com.sample.myapplication.ui.main.CountryAdapter.CountryViewHolder
 import com.sample.myapplication.api.response.CountryResponseItem
 import com.sample.myapplication.databinding.ItemCountryBinding
+import com.sample.myapplication.ui.main.CountryAdapter.CountryViewHolder
 import com.sample.myapplication.utils.ImageUtils.loadSVGImage
 
 class CountryAdapter(private val countries: MutableList<CountryResponseItem>) :
@@ -25,7 +25,7 @@ class CountryAdapter(private val countries: MutableList<CountryResponseItem>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val inflater =
             parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val binding = ItemCountryBinding.inflate(inflater,parent,false)
+        val binding = ItemCountryBinding.inflate(inflater, parent, false)
         return CountryViewHolder(binding)
     }
 
@@ -43,6 +43,7 @@ class CountryAdapter(private val countries: MutableList<CountryResponseItem>) :
                 onItemClick?.invoke(countries[bindingAdapterPosition], binding)
             }
         }
+
         fun bind(countryResponseItem: CountryResponseItem) {
             ViewCompat.setTransitionName(binding.imageView, countryResponseItem.name)
             binding.textView.text = countryResponseItem.name

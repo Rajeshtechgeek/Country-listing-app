@@ -2,6 +2,7 @@ package com.sample.myapplication.utils.svg
 
 import android.graphics.Picture
 import android.graphics.drawable.PictureDrawable
+import android.util.Log
 import com.bumptech.glide.load.Options
 import com.bumptech.glide.load.engine.Resource
 import com.bumptech.glide.load.resource.SimpleResource
@@ -18,6 +19,7 @@ class SvgDrawableTranscoder : ResourceTranscoder<SVG?, PictureDrawable> {
         val svg = toTranscode.get()
         val picture = svg.renderToPicture()
         val drawable = PictureDrawable(picture)
+        Log.d("SvgDrawableTranscoder", "Width: " + picture.width + " height: " + picture.height)
         return SimpleResource(drawable)
     }
 }

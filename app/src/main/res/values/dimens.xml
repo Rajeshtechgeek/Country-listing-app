@@ -18,4 +18,6 @@
     <dimen name="country_detail_app_bar_height">278dp</dimen>
     <!-- elevation for Country Detail toolbar - used to convert to pixels when hiding/showing -->
     <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">10dp</dimen>
 </resources>

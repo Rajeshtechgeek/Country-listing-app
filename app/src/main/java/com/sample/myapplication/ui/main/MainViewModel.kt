@@ -51,7 +51,7 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun filter(query: String?) {
+    fun filter(query: String) {
         Log.d(TAG, "search string: $query")
         searchJob?.cancel()
         searchJob = viewModelScope.launch {

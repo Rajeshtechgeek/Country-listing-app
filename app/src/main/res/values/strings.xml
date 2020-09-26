@@ -8,4 +8,5 @@
     <string name="numeric_code">Numeric code: %s</string>
     <string name="area">Area: %s</string>
     <string name="population">Population: %d</string>
+    <string name="search">Search Countries</string>
 </resources>

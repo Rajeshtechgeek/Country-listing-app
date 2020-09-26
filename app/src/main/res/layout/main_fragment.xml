@@ -6,12 +6,27 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Theme.Country.AppBarOverlay">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        app:defaultQueryHint="@string/search"
         app:iconifiedByDefault="false">
-        <requestFocus />
     </androidx.appcompat.widget.SearchView>
 
     <androidx.core.widget.ContentLoadingProgressBar
@@ -27,7 +42,8 @@
         android:id="@+id/countryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        app:spanCount="2"
         android:layout_marginTop="15dp" />
 
 </LinearLayout>

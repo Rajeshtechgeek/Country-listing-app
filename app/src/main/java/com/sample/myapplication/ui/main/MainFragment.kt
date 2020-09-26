@@ -11,18 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.Fade
 import com.sample.myapplication.DetailsTransition
 import com.sample.myapplication.databinding.MainFragmentBinding
 import com.sample.myapplication.utils.TAG
 
 class MainFragment : Fragment(), SearchView.OnQueryTextListener {
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +27,8 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
      * Country list view adapter
      */
     private val listAdapter = CountryAdapter(ArrayList())
+
+    private var isTextChanged: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,13 +64,6 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.progressLoading.show()
         binding.countryRecyclerView.apply {
             setItemViewCacheSize(10)
-            setHasFixedSize(true)
-            addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    LinearLayoutManager.VERTICAL
-                )
-            )
             adapter = listAdapter
         }
         binding.searchView.setOnQueryTextListener(this)
@@ -90,13 +79,18 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
+    override fun onQueryTextSubmit(query: String): Boolean {
         viewModel.filter(query)
         return true
     }
 
-    override fun onQueryTextChange(newText: String?): Boolean {
-        viewModel.filter(newText)
+    override fun onQueryTextChange(newText: String): Boolean {
+        if (newText.isNotEmpty()) {
+            isTextChanged = newText.isNotEmpty()
+        }
+        if (isTextChanged) {
+            viewModel.filter(newText)
+        }
         return true
     }
 
