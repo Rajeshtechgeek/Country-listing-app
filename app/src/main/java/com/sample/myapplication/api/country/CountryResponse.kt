@@ -1,4 +1,4 @@
-package com.sample.myapplication.api.response
+package com.sample.myapplication.api.country
 
 import androidx.annotation.Keep
 

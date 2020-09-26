@@ -2,32 +2,39 @@ package com.sample.myapplication.api
 
 import com.sample.myapplication.BuildConfig
 import com.sample.myapplication.api.country.CountryResponse
+import com.sample.myapplication.api.weather.WeatherResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * Used to connect to the Country API to fetch countries
  */
-interface ApiService {
+interface WeatherApiService {
 
-    @GET("rest/v2/all ")
-    suspend fun getCountries(): CountryResponse
+    @GET("weather")
+    suspend fun getWeatherCity(
+        @Query("lat") lat: String?,
+        @Query("lon") lon: String?,
+        @Query("appid") appId: String?,
+        @Query("units") units: String?,
+    ): WeatherResponse
 
     companion object {
-        private var instance: ApiService? = null
+        private var instance: WeatherApiService? = null
 
         /**
-         * This  method returns single instance of [ApiService]
+         * This  method returns single instance of [WeatherApiService]
          *
-         * @return [ApiService] instance
+         * @return [WeatherApiService] instance
          */
-        fun getInstance(): ApiService {
+        fun getInstance(): WeatherApiService {
             if (instance == null) { // Single Checked
-                synchronized(ApiService::class.java) {
+                synchronized(WeatherApiService::class.java) {
                     if (instance == null) { // Double checked
                         instance = create()
                     }
@@ -36,7 +43,7 @@ interface ApiService {
             return instance!!
         }
 
-        private fun create(): ApiService {
+        private fun create(): WeatherApiService {
             val logger = HttpLoggingInterceptor().apply { level = Level.BASIC }
 
             val client = OkHttpClient.Builder()
@@ -44,11 +51,11 @@ interface ApiService {
                 .build()
 
             return Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
+                .baseUrl(BuildConfig.WEATHER_BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(ApiService::class.java)
+                .create(WeatherApiService::class.java)
         }
     }
 }

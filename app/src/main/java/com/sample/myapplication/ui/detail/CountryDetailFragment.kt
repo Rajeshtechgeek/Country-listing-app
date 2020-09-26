@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.sample.myapplication.DetailsTransition
 import com.sample.myapplication.R
-import com.sample.myapplication.api.response.CountryResponseItem
+import com.sample.myapplication.api.country.CountryResponseItem
 import com.sample.myapplication.databinding.CountryDetailFragmentBinding
 import com.sample.myapplication.utils.ImageUtils
 

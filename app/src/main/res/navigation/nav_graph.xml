@@ -18,6 +18,6 @@
         android:label="CountryDetailFragment" >
         <argument
             android:name="CountryDetail"
-            app:argType="com.sample.myapplication.api.response.CountryResponseItem" />
+            app:argType="com.sample.myapplication.api.country.CountryResponseItem" />
     </fragment>
 </navigation>

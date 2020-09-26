@@ -27,9 +27,11 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <style name="TextAppearance.Country.Detail.Heading.Text" parent="TextAppearance.MaterialComponents.Body1">
+    <style name="TextAppearance.Country.Detail.Body.Text" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
+
+    <style name="TextAppearance.Country.Toolbar.Light.Text" parent="TextAppearance.MaterialComponents.Headline6"/>
 
     <style name="Theme.Country.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 

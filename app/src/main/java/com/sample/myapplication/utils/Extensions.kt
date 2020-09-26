@@ -1,6 +1,7 @@
 package com.sample.myapplication.utils
 
 import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Build
 import android.widget.Toast
 
@@ -20,3 +21,15 @@ val Any.TAG: String
 
 fun Context.toast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+/**
+ * Checks if is net connected.
+ *
+ * @param context The instance of context
+ * @return boolean True if is net connected
+ */
+fun Context.isNetConnected(): Boolean {
+    val conMgr = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return conMgr.activeNetworkInfo != null && conMgr.activeNetworkInfo.isConnected
+}
+

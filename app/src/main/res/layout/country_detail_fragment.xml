@@ -82,7 +82,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView1"
-                    style="@style/TextAppearance.Country.Detail.Heading.Text"
+                    style="@style/TextAppearance.Country.Detail.Body.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_normal"
@@ -91,7 +91,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
-                style="@style/TextAppearance.Country.Detail.Heading.Text"
+                style="@style/TextAppearance.Country.Detail.Body.Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_normal"
@@ -103,7 +103,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView2"
-                    style="@style/TextAppearance.Country.Detail.Heading.Text"
+                    style="@style/TextAppearance.Country.Detail.Body.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_normal"
@@ -113,7 +113,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView3"
-                style="@style/TextAppearance.Country.Detail.Heading.Text"
+                style="@style/TextAppearance.Country.Detail.Body.Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_normal"
@@ -124,7 +124,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView3"
-                    style="@style/TextAppearance.Country.Detail.Heading.Text"
+                    style="@style/TextAppearance.Country.Detail.Body.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_normal"
@@ -134,7 +134,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
-                style="@style/TextAppearance.Country.Detail.Heading.Text"
+                style="@style/TextAppearance.Country.Detail.Body.Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_normal"
@@ -145,7 +145,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView4"
-                    style="@style/TextAppearance.Country.Detail.Heading.Text"
+                    style="@style/TextAppearance.Country.Detail.Body.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_normal"
@@ -154,7 +154,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView5"
-                style="@style/TextAppearance.Country.Detail.Heading.Text"
+                style="@style/TextAppearance.Country.Detail.Body.Text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_normal"
@@ -165,7 +165,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView5"
-                    style="@style/TextAppearance.Country.Detail.Heading.Text"
+                    style="@style/TextAppearance.Country.Detail.Body.Text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_normal"

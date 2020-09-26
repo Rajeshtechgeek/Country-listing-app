@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.sample.myapplication.R
-import com.sample.myapplication.api.response.CountryResponseItem
+import com.sample.myapplication.api.country.CountryResponseItem
 import com.sample.myapplication.databinding.ItemCountryBinding
 import com.sample.myapplication.ui.main.CountryAdapter.CountryViewHolder
 import com.sample.myapplication.utils.ImageUtils.loadSVGImage

@@ -7,6 +7,9 @@
     <string name="capital">Capital: %s</string>
     <string name="numeric_code">Numeric code: %s</string>
     <string name="area">Area: %s</string>
+    <string name="temperature">%s ℃</string>
     <string name="population">Population: %d</string>
     <string name="search">Search Countries</string>
+    <string name="error_internet">Please check your internet connection</string>
+    <string name="warning_location_permission">Location permission needed for weather reports</string>
 </resources>

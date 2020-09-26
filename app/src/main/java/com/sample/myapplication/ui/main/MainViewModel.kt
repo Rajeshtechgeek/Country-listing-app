@@ -6,8 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sample.myapplication.BuildConfig
 import com.sample.myapplication.api.ApiService
-import com.sample.myapplication.api.response.CountryResponseItem
+import com.sample.myapplication.api.WeatherApiService
+import com.sample.myapplication.api.country.CountryResponseItem
+import com.sample.myapplication.api.weather.WeatherResponse
 import com.sample.myapplication.data.CountryRepository
 import com.sample.myapplication.utils.TAG
 import kotlinx.coroutines.Dispatchers
@@ -22,12 +25,20 @@ class MainViewModel : ViewModel() {
 
     private var searchJob: Job? = null
     private val repository: CountryRepository =
-        CountryRepository.getInstance(ApiService.getInstance())
+        CountryRepository.getInstance(
+            ApiService.getInstance(),
+            WeatherApiService.getInstance()
+        )
 
     private val _countryList = MutableLiveData<List<CountryResponseItem>>()
 
     val countryList: LiveData<List<CountryResponseItem>>
         get() = _countryList
+
+    private val _weatherData = MutableLiveData<WeatherResponse>()
+
+    val weatherData: LiveData<WeatherResponse>
+        get() = _weatherData
 
     /**
      * local cache for the list
@@ -75,4 +86,10 @@ class MainViewModel : ViewModel() {
             }
             return@withContext temp
         }
+
+    fun getWeather(lat: String, lon: String) {
+        viewModelScope.launch {
+            _weatherData.value = repository.getWeather(lat, lon, BuildConfig.WEATHER_KEY, "metric")
+        }
+    }
 }

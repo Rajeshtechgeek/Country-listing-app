@@ -1,11 +1,16 @@
 package com.sample.myapplication.data
 
 import com.sample.myapplication.api.ApiService
-import com.sample.myapplication.api.response.CountryResponseItem
+import com.sample.myapplication.api.WeatherApiService
+import com.sample.myapplication.api.country.CountryResponseItem
+import com.sample.myapplication.api.weather.WeatherResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CountryRepository private constructor(private val apiService: ApiService) {
+class CountryRepository private constructor(
+    private val apiService: ApiService,
+    private val weatherApiService: WeatherApiService,
+) {
 
     /**
      * local cache for the list
@@ -19,8 +24,11 @@ class CountryRepository private constructor(private val apiService: ApiService) 
         }
     }
 
-    fun getCountryDetail(position: Int): CountryResponseItem {
-        return countryList.get(position)
+    suspend fun getWeather(lat: String, lon: String, apiKey: String, units: String):
+            WeatherResponse {
+        return withContext(Dispatchers.IO) {
+            return@withContext weatherApiService.getWeatherCity(lat, lon, apiKey, units)
+        }
     }
 
     companion object {
@@ -31,11 +39,14 @@ class CountryRepository private constructor(private val apiService: ApiService) 
          *
          * @return [CountryRepository] instance
          */
-        fun getInstance(apiService: ApiService): CountryRepository {
+        fun getInstance(
+            apiService: ApiService,
+            weatherApiService: WeatherApiService
+        ): CountryRepository {
             if (instance == null) { // Single Checked
                 synchronized(ApiService::class.java) {
                     if (instance == null) { // Double checked
-                        instance = CountryRepository(apiService)
+                        instance = CountryRepository(apiService, weatherApiService)
                     }
                 }
             }
