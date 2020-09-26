@@ -21,7 +21,8 @@ import kotlin.collections.ArrayList
 class MainViewModel : ViewModel() {
 
     private var searchJob: Job? = null
-    private val repository: CountryRepository = CountryRepository.getInstance(ApiService.getInstance())
+    private val repository: CountryRepository =
+        CountryRepository.getInstance(ApiService.getInstance())
 
     private val _countryList = MutableLiveData<List<CountryResponseItem>>()
 
@@ -39,6 +40,7 @@ class MainViewModel : ViewModel() {
     val temp = ArrayList<CountryResponseItem>()
 
     fun getCountryList(forceRefresh: Boolean) {
+        Log.d(TAG, "getCountryList force refresh: $forceRefresh")
         viewModelScope.launch {
             if (countryListCopy.isEmpty() || forceRefresh) {
                 countryListCopy = repository.getCountries()
@@ -55,13 +57,13 @@ class MainViewModel : ViewModel() {
         searchJob = viewModelScope.launch {
             // do filter in background thread and post value in main thread
             _countryList.value = doFilter(query)
-            temp.clear()
         }
     }
 
     private suspend fun doFilter(query: String?): List<CountryResponseItem> =
         withContext(Dispatchers.IO) {
             Log.d(TAG, "filterRecentChatList() is working in thread ${Thread.currentThread().name}")
+            temp.clear()
             if (!TextUtils.isEmpty(query)) {
                 for (s in countryListCopy) {
                     if (s.name!!.toLowerCase(Locale.getDefault()).contains(query!!)) {
