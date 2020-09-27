@@ -2,12 +2,11 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Country" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorOnSurface">@color/country_black</item>
         <item name="colorSurface">@color/country_gray_50</item>
-        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
         <item name="android:colorBackground">@color/country_white</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowTranslucentStatus">true</item>
