@@ -24,7 +24,7 @@ object ImageUtils {
         imgUrl: String?,
         imgView: ImageView,
         errorImg: Int,
-        listener: RequestListener<PictureDrawable>
+        listener: RequestListener<PictureDrawable>? = null
     ) {
         val requestBuilder: RequestBuilder<PictureDrawable> = Glide.with(context)
             .`as`(PictureDrawable::class.java)
@@ -37,18 +37,6 @@ object ImageUtils {
         val uri: Uri = Uri.parse(imgUrl)
         requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE).load(uri).into(imgView)
 
-    }
-
-    fun loadSVGImage(context: Context, imgUrl: String?, imgView: ImageView, errorImg: Int) {
-        val requestBuilder: RequestBuilder<PictureDrawable> = Glide.with(context)
-            .`as`(PictureDrawable::class.java)
-            .error(errorImg)
-            .override(Target.SIZE_ORIGINAL)
-            .transition(withCrossFade())
-            .listener(SvgSoftwareLayerSetter())
-
-        val uri: Uri = Uri.parse(imgUrl)
-        requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE).load(uri).into(imgView)
     }
 
     fun loadImageWithGlide(context: Context, imgUrl: String?, imgView: ImageView, errorImg: Int) {
