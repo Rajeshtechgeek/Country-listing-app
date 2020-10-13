@@ -73,21 +73,32 @@
         app:defaultQueryHint="@string/search"
         app:iconifiedByDefault="false" />
 
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/progressLoading"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/padding_normal"
-        android:visibility="visible" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/countryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="15dp"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        android:visibility="gone"
         app:spanCount="2" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/placeholder_item_country" />
+
+            <include layout="@layout/placeholder_item_country" />
+
+            <include layout="@layout/placeholder_item_country" />
+
+            <include layout="@layout/placeholder_item_country" />
+        </TableLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </LinearLayout>

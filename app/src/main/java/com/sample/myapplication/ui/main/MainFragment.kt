@@ -104,7 +104,7 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
         if (requireContext().isNetConnected()) {
             viewModel.getCountryList(false)
         } else {
-            binding.progressLoading.hide()
+            binding.shimmerViewContainer.startShimmer()
             requireContext().toast(getString(R.string.error_internet))
         }
     }
@@ -112,9 +112,11 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun setObservers() {
         viewModel.countryList.observe(viewLifecycleOwner, {
             Log.d(TAG, "country list size: ${it.size}")
+            binding.countryRecyclerView.visibility = View.VISIBLE
+            binding.shimmerViewContainer.visibility = View.GONE
             listAdapter.updateListData(it)
             listAdapter.notifyDataSetChanged()
-            binding.progressLoading.hide()
+            binding.shimmerViewContainer.stopShimmer()
             // Start the transition once all views have been
             // measured and laid out
             (view?.parent as? ViewGroup)?.doOnPreDraw {
@@ -131,7 +133,7 @@ class MainFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun initViews() {
-        binding.progressLoading.show()
+        binding.shimmerViewContainer.startShimmer()
         binding.countryRecyclerView.apply {
             setItemViewCacheSize(10)
             adapter = listAdapter

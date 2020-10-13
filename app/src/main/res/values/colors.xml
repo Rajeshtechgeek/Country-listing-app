@@ -13,5 +13,6 @@
     <color name="country_gray_50">#fafafa</color>
     <color name="country_gray_50_a600">#99fafafa</color>
     <color name="country_white">#FFFFFF</color>
+    <color name="background">#dddddd</color>
 
 </resources>
